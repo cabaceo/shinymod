@@ -15,7 +15,7 @@
 download_ui = function(id, label = "Download") {
         ns = NS(id)
         shinyWidgets::downloadBttn(ns("download"), label = label,
-                                   style = "jelly", color = "success")
+                                   style = "jelly", color = "default")
 }
 
 #' @title Implement the download button.
