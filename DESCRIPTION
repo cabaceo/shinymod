@@ -1,0 +1,22 @@
+Package: shinymod
+Type: Package
+Title: Reusable Shiny Modules and Helper Functions
+Version: 0.1.0
+Author@R: person("Guangming", "Lang", email = "gmlang@cabaceo.com",
+                 role = c("aut", "cre"))
+Maintainer: The package maintainer <gmlang@cabaceo.com>
+Description: A collection of shiny modules and helper functions for efficiently 
+    making shinyapps or flexdashboards.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 4.0.2)
+RoxygenNote: 7.1.1
+Imports: 
+    readr,
+    shinyWidgets,
+    htmltools,
+    DT,
+    factoextra,
+    ggrepel
