@@ -26,6 +26,9 @@ A module server function that can be called in a reactive env.
 The server component of the Shiny module for creating a pretty download
 button for downloading a csv, png, or jpg file.
 }
+\examples{
+inst/examples/ex-download.R
+}
 \seealso{
 \code{\link{download_ui}} for the UI.
 }

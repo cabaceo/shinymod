@@ -20,6 +20,9 @@ A list of HTML elements that can be added to a UI definition and
 The UI component of the Shiny module for creating a pretty download button
 for downloading a csv, png, or jpg file.
 }
+\examples{
+inst/examples/ex-download.R
+}
 \seealso{
 \code{\link{download_server}} for the server.
 }

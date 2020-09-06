@@ -11,6 +11,7 @@
 #'         accessed by the server component.
 #' @seealso \code{\link{download_server}} for the server.
 #' @export
+#' @examples inst/examples/ex-download.R
 download_ui = function(id, label = "Download") {
         ns = NS(id)
         shinyWidgets::downloadBttn(ns("download"), label = label,
@@ -33,6 +34,7 @@ download_ui = function(id, label = "Download") {
 #' @return A module server function that can be called in a reactive env.
 #' @seealso \code{\link{download_ui}} for the UI.
 #' @export
+#' @examples inst/examples/ex-download.R
 download_server = function(id, obj, fname = 'download', ftype = 'csv', ...) {
         stopifnot("`ftype` must be one of 'csv', 'png' or 'jpg'." =
                           ftype %in% c('csv', 'png', 'jpg'))

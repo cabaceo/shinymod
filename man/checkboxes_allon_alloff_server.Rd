@@ -24,6 +24,9 @@ A module server function that can be called in a reactive env.
 The server component of the Shiny module that for creating a group of pretty
 checkboxes with an all-on and an all-off control buttons.
 }
+\examples{
+inst/examples/ex-checkboxes-allon-alloff.R
+}
 \seealso{
 \code{\link{checkboxes_allon_alloff_ui}} for the UI, and
          \code{\link{mk_checkboxes}} for how the group checkboxes are made.

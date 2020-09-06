@@ -14,6 +14,7 @@
 #'         accessed by the server component.
 #' @seealso \code{\link{checkboxes_allon_alloff_server}} for the server.
 #' @export
+#' @examples inst/examples/ex-checkboxes-allon-alloff.R
 checkboxes_allon_alloff_ui = function(id, bttn_height = 60) {
         ns = NS(id)
         tagList(
@@ -50,6 +51,7 @@ checkboxes_allon_alloff_ui = function(id, bttn_height = 60) {
 #' @seealso \code{\link{checkboxes_allon_alloff_ui}} for the UI, and
 #'          \code{\link{mk_checkboxes}} for how the group checkboxes are made.
 #' @export
+#' @examples inst/examples/ex-checkboxes-allon-alloff.R
 checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
         moduleServer(id, function(input, output, session) {
                 ns = session$ns
@@ -107,6 +109,7 @@ checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
 #' @seealso \code{\link{checkbox_w_onoff_button_server}} for an example of how
 #'          to use this function.
 #' @export
+#' @examples inst/examples/ex-checkboxes-allon-alloff.R
 mk_checkboxes = function(id, label = NULL, choices, selected = NULL) {
         shinyWidgets::prettyCheckboxGroup(
                 inputId = id,

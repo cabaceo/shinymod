@@ -38,6 +38,25 @@ htmlize_title = function(title, type = 'page') {
 htmlize_w_linebreaks = function(...)
         htmltools::HTML(paste(list(...), collapse = '<br/>'))
 
+#' @title Creat an unordered list (with bullet points) of texts.
+#'
+#' @description
+#' Feed this function however many lines of strings you want, and it'll itemize
+#' them into a bullet-pointed list.
+#'
+#' @param ... One or more strings.
+#' @return HTML code wrapped around the input text.
+#' @export
+#' @examples
+#' s1 = 'Hi, my name is GM. How are you?'
+#' s2 = "I'm fine. Thank you, and yourself?"
+#' s3 = "I'm doing super. Nice meeting you."
+#' htmlize_uoli(s1, s2, s3)
+htmlize_uoli = function(...) {
+        body = paste(list(...), collapse = '</li><li>')
+        htmltools::HTML(paste('<li>', body, '</li>'))
+}
+
 #' @title HTMLize data tables
 #'
 #' @description

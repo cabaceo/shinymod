@@ -18,3 +18,6 @@ A list of HTML elements that can be added to a UI definition.
 Create a run button that triggers some calculation when clicked. Run buttons
 are often used in `observeEvent()`.
 }
+\examples{
+inst/examples/ex-run-button.R
+}

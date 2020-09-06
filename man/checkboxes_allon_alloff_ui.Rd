@@ -23,6 +23,9 @@ A list of HTML elements that can be added to a UI definition and
 The UI component of the Shiny module for creating a group of pretty
 checkboxes with an all-on and an all-off control buttons.
 }
+\examples{
+inst/examples/ex-checkboxes-allon-alloff.R
+}
 \seealso{
 \code{\link{checkboxes_allon_alloff_server}} for the server.
 }

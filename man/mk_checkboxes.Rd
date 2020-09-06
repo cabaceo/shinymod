@@ -28,6 +28,9 @@ Create a group of checkboxes that can be used to toggle multiple choices
 independently. The server will receive the input as a character vector of the
 selected values.
 }
+\examples{
+inst/examples/ex-checkboxes-allon-alloff.R
+}
 \seealso{
 \code{\link{checkbox_w_onoff_button_server}} for an example of how
          to use this function.
