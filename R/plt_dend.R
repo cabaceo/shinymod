@@ -6,6 +6,7 @@
 #'
 #' @param hc Object returned by `hclust()`.
 #' @param n_clusters Integer. Number of clusters.
+#' @param label_size Numeric. Size (default = 0.8) of text labels for the leaves.
 #' @param title String. Plot title (default = "Hiearchical Clustering Result").
 #' @param subtitle String. Plot subtitle (default = NULL).
 #' @param xlab String. Label of the x-axis (default = NULL).
@@ -17,10 +18,11 @@
 #' dd = dist(scale(USArrests), method = "euclidean")
 #' hc = hclust(dd, method = "ward.D2")
 #' plt_dend(hc, 2)
-#' plt_dend(hc, 4)
+#' plt_dend(hc, 4, label_size = 0.5)
 #' plt_dend(hc, 5)
-plt_dend = function(hc, n_clusters, title = "Hiearchical Clustering Result",
-                    subtitle = NULL, xlab = NULL, ylab = NULL) {
+plt_dend = function(hc, n_clusters, label_size = 0.8,
+                    title = "Hiearchical Clustering Result", subtitle = NULL,
+                    xlab = NULL, ylab = NULL) {
 
         # set up
         ems_colors = c('#2B364A', '#FFC119', '#0B7D85', '#214242', '#A6A6A6')
@@ -36,8 +38,8 @@ plt_dend = function(hc, n_clusters, title = "Hiearchical Clustering Result",
         factoextra::fviz_dend(
                 hc,
                 k = n_clusters,
-                cex = 0.5,
-                rect = T, # add rectangle around groups
+                cex = label_size,
+                rect = FALSE, # do NOT add rectangle around groups
                 horiz = TRUE,
                 k_colors = gp_colors,
                 color_labels_by_k = TRUE,  # color labels by groups

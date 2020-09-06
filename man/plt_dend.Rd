@@ -7,6 +7,7 @@
 plt_dend(
   hc,
   n_clusters,
+  label_size = 0.8,
   title = "Hiearchical Clustering Result",
   subtitle = NULL,
   xlab = NULL,
@@ -17,6 +18,8 @@ plt_dend(
 \item{hc}{Object returned by `hclust()`.}
 
 \item{n_clusters}{Integer. Number of clusters.}
+
+\item{label_size}{Numeric. Size (default = 0.8) of text labels for the leaves.}
 
 \item{title}{String. Plot title (default = "Hiearchical Clustering Result").}
 
@@ -38,6 +41,6 @@ data(USArrests)
 dd = dist(scale(USArrests), method = "euclidean")
 hc = hclust(dd, method = "ward.D2")
 plt_dend(hc, 2)
-plt_dend(hc, 4)
+plt_dend(hc, 4, label_size = 0.5)
 plt_dend(hc, 5)
 }
