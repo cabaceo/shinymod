@@ -4,7 +4,13 @@
 \alias{htmlize_datatable}
 \title{HTMLize data tables}
 \usage{
-htmlize_datatable(df, type = "basic", add_bttns = FALSE, new_width = "50px")
+htmlize_datatable(
+  df,
+  type = "basic",
+  digits = 2,
+  add_bttns = FALSE,
+  new_width = "50px"
+)
 }
 \arguments{
 \item{df}{Data frame. The data to be displayed.}
@@ -13,6 +19,10 @@ htmlize_datatable(df, type = "basic", add_bttns = FALSE, new_width = "50px")
 pagination, search box and information. It only shows the data table
 as a plain HTML table. Fancy type keeps all these features and in
 addition allows you to change the width of all the columns at once.}
+
+\item{digits}{Integer. The number of digits (default = 2) to show after the
+decimal point for only the columns with decimal values, not the ones
+with all integer values.}
 
 \item{add_bttns}{Logical. If TRUE, add three buttons ('Copy', 'Print' and
 'Download') to the displayed data table. Default is FALSE.}
@@ -30,6 +40,6 @@ A `DT::datatable()` object, which can be rendered under
 Add HTML styling to better display data tables.
 }
 \examples{
-htmlize_datatable(iris, type = 'basic')
-htmlize_datatable(iris, type = 'fancy', add_bttns = TRUE)
+htmlize_datatable(iris, type = 'basic', digits = 1)
+htmlize_datatable(iris, type = 'fancy', digits = 1, add_bttns = TRUE)
 }

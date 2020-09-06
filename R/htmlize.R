@@ -67,6 +67,9 @@ htmlize_uoli = function(...) {
 #'        pagination, search box and information. It only shows the data table
 #'        as a plain HTML table. Fancy type keeps all these features and in
 #'        addition allows you to change the width of all the columns at once.
+#' @param digits Integer. The number of digits (default = 2) to show after the
+#'        decimal point for only the columns with decimal values, not the ones
+#'        with all integer values.
 #' @param add_bttns Logical. If TRUE, add three buttons ('Copy', 'Print' and
 #'        'Download') to the displayed data table. Default is FALSE.
 #' @param new_width String or integer. New width of all the columns. Default
@@ -77,11 +80,12 @@ htmlize_uoli = function(...) {
 #'         `DT::renderDataTable()`.
 #' @export
 #' @examples
-#' htmlize_datatable(iris, type = 'basic')
-#' htmlize_datatable(iris, type = 'fancy', add_bttns = TRUE)
-htmlize_datatable = function(df, type = 'basic', add_bttns = FALSE,
-                             new_width = '50px') {
+#' htmlize_datatable(iris, type = 'basic', digits = 1)
+#' htmlize_datatable(iris, type = 'fancy', digits = 1, add_bttns = TRUE)
+htmlize_datatable = function(df, type = 'basic', digits = 2,
+                             add_bttns = FALSE, new_width = '50px') {
 
+        # set up table configs
         if (add_bttns) {
                 dbttn_config = list(extend = 'collection',
                                     buttons = c('csv', 'excel', 'pdf'),
@@ -95,19 +99,33 @@ htmlize_datatable = function(df, type = 'basic', add_bttns = FALSE,
                                 # center cell values
                                 className = 'dt-center'))
 
+        # find all columns of decimal values so that we can format them to only
+        # show 3 decimal places. It doesn't make sense to do this for integers.
+        num_vars = names(df)[sapply(df, function(x) class(x) == "numeric")]
+        has_decs = sapply(num_vars, function(vnm) !all(is_integer(df[[vnm]])))
+        dec_vars = num_vars[has_decs]
+
+        # apply the configs
         if (type == 'basic') {
-                DT::datatable(
-                        df, rownames = FALSE, extensions = 'Buttons',
-                        options = list(dom = 'Bfrtip', buttons = bttns_config,
-                                       columnDefs = cols_config,
-                                       paging = F, searching = F, info = F)
-                        )
+                res = DT::datatable(df, rownames = FALSE, extensions='Buttons',
+                                    options = list(dom = 'Bfrtip',
+                                                   buttons = bttns_config,
+                                                   columnDefs = cols_config,
+                                                   paging = F, searching = F,
+                                                   info = F))
         } else {
-                DT::datatable(
-                        df, rownames = FALSE, extensions = 'Buttons',
-                        options = list(dom = 'Bfrtip', buttons = bttns_config,
-                                       columnDefs = cols_config,
-                                       pageLength = 10, autoWidth = TRUE)
-                        )
+                res = DT::datatable(df, rownames = FALSE, extensions='Buttons',
+                                    options = list(dom = 'Bfrtip',
+                                                   buttons = bttns_config,
+                                                   columnDefs = cols_config,
+                                                   pageLength = 10,
+                                                   autoWidth = TRUE))
         }
+
+        # make decimal values 3 digits and return
+        DT::formatRound(res, columns = dec_vars, digits = digits)
 }
+
+
+
+
