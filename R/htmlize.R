@@ -102,10 +102,12 @@ htmlize_datatable = function(df, type = 'basic', digits = 2,
         # find all columns of decimal values so that we can format them to only
         # show 3 decimal places. It doesn't make sense to do this for integers.
         num_vars = names(df)[sapply(df, function(x) class(x) == "numeric")]
-        if (!is_empty(num_vars)) {
+        if (is_empty(num_vars)) {
+                dec_vars = NULL
+        } else {
                 has_decs = sapply(num_vars, function(vnm) !all(is_integer(df[[vnm]])))
                 dec_vars = num_vars[has_decs]
-        } else { dec_vars = NULL}
+        }
 
         # apply the configs
         if (type == 'basic') {
@@ -125,9 +127,10 @@ htmlize_datatable = function(df, type = 'basic', digits = 2,
         }
 
         if (is_empty(dec_vars)) {
-                # make decimal values 3 digits
+                res
+        } else { # make decimal values 3 digits
                 DT::formatRound(res, columns = dec_vars, digits = digits)
-        } else { res }
+        }
 }
 
 
