@@ -85,12 +85,7 @@ checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
                 })
 
 
-                reactive({
-                        # check: warn users when all items are checked off
-                        validate(need(is.null(input$checkboxes),
-                                      'Need at least one box checked.'))
-                        req(input$checkboxes)
-                })
+                reactive({ req(input$checkboxes) })
         })
 }
 
