@@ -16,8 +16,7 @@ all-on and all-off buttons will overlap with whatever UI elements
 that are placed right below them.}
 }
 \value{
-A list of HTML elements that can be added to a UI definition and
-        accessed by the server component.
+Must use it together with its counterpart server.
 }
 \description{
 The UI component of the Shiny module for creating a group of pretty

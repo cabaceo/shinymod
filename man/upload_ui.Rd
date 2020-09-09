@@ -13,8 +13,7 @@ upload_ui(id, label = "Select a text file (< 30MB)")
 shown on the upload button.}
 }
 \value{
-A list of HTML elements that can be added to a UI definition and
-        accessed by the server component.
+Must use it together with its counterpart server.
 }
 \description{
 The UI component of the Shiny module for creating a pretty upload button

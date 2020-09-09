@@ -1,8 +1,8 @@
-#' @title Run button.
+#' @title An awesome run-button.
 #'
 #' @description
-#' Create a run button that triggers some calculation when clicked. Run buttons
-#' are often used in `observeEvent()`.
+#' Create a pretty run-button that triggers some calculation when clicked.
+#' Run-buttons are often used in `observeEvent()`.
 #'
 #' @param id    String. The input slot that will be used to access the value.
 #' @param label String. Text (default = 'Run') to be shown on the run button.

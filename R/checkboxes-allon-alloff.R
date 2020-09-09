@@ -10,8 +10,7 @@
 #'        Without it (or when its value is too small), it can happen that the
 #'        all-on and all-off buttons will overlap with whatever UI elements
 #'        that are placed right below them.
-#' @return A list of HTML elements that can be added to a UI definition and
-#'         accessed by the server component.
+#' @return Must use it together with its counterpart server.
 #' @seealso \code{\link{checkboxes_allon_alloff_server}} for the server.
 #' @export
 #' @examples inst/examples/ex-checkboxes-allon-alloff.R
@@ -37,7 +36,7 @@ checkboxes_allon_alloff_ui = function(id, bttn_height = 60) {
 #' @title Implement the control of checkboxes by all-on/all-off buttons.
 #'
 #' @description
-#' The server component of the Shiny module that for creating a group of pretty
+#' The server component of the Shiny module for creating a group of pretty
 #' checkboxes with an all-on and an all-off control buttons.
 #'
 #' @param id    String. The input slot that will be used to access the value.
@@ -92,39 +91,4 @@ checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
                         req(input$checkboxes)
                 })
         })
-}
-
-
-#' @title Grouped checkboxes.
-#'
-#' @description
-#' Create a group of checkboxes that can be used to toggle multiple choices
-#' independently. The server will receive the input as a character vector of the
-#' selected values.
-#'
-#' @param id    String. The input slot that will be used to access the value.
-#' @param label String. String. Display label/title for the checkboxes group, or
-#'        NULL (default) for no label.
-#' @param choices Character vector. List of values to show checkboxes for.
-#'        If elements of the list are named then that name rather than the value
-#'        is displayed to the user. The values should be strings; other types
-#'        (such as logicals and numbers) will be coerced to strings.
-#' @param selected The values that should be initially selected, if any.
-#'        Default is NULL for no initial selection.
-#' @return A list of HTML elements that can be added to a UI definition.
-#' @seealso \code{\link{checkbox_w_onoff_button_server}} for an example of how
-#'          to use this function.
-#' @export
-#' @examples inst/examples/ex-checkboxes-allon-alloff.R
-mk_checkboxes = function(id, label = NULL, choices, selected = NULL) {
-        shinyWidgets::prettyCheckboxGroup(
-                inputId = id,
-                label = htmltools::h4(label),
-                choices = choices,
-                selected = selected,
-                icon = shiny::icon("check-square-o"),
-                outline = TRUE,
-                animation = "jelly",
-                status = 'warning',
-                width = '100%')
 }

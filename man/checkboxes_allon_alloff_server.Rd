@@ -21,7 +21,7 @@ is displayed to the user. The values should be strings; other types
 A module server function that can be called in a reactive env.
 }
 \description{
-The server component of the Shiny module that for creating a group of pretty
+The server component of the Shiny module for creating a group of pretty
 checkboxes with an all-on and an all-off control buttons.
 }
 \examples{

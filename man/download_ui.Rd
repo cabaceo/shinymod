@@ -13,8 +13,7 @@ download_ui(id, label = "Download")
 button.}
 }
 \value{
-A list of HTML elements that can be added to a UI definition and
-        accessed by the server component.
+Must use it together with its counterpart server.
 }
 \description{
 The UI component of the Shiny module for creating a pretty download button

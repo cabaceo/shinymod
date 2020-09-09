@@ -2,7 +2,7 @@
 % Please edit documentation in R/mk_run_button.R
 \name{mk_run_button}
 \alias{mk_run_button}
-\title{Run button.}
+\title{An awesome run-button.}
 \usage{
 mk_run_button(id, label = "Run")
 }
@@ -15,8 +15,8 @@ mk_run_button(id, label = "Run")
 A list of HTML elements that can be added to a UI definition.
 }
 \description{
-Create a run button that triggers some calculation when clicked. Run buttons
-are often used in `observeEvent()`.
+Create a pretty run-button that triggers some calculation when clicked.
+Run-buttons are often used in `observeEvent()`.
 }
 \examples{
 inst/examples/ex-run-button.R

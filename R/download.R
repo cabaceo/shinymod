@@ -7,8 +7,7 @@
 #' @param id    String. The input slot that will be used to access the value.
 #' @param label String. Text (default = 'Download') to be shown on the download
 #'        button.
-#' @return A list of HTML elements that can be added to a UI definition and
-#'         accessed by the server component.
+#' @return Must use it together with its counterpart server.
 #' @seealso \code{\link{download_server}} for the server.
 #' @export
 #' @examples inst/examples/ex-download.R
