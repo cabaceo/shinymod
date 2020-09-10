@@ -19,4 +19,8 @@ Imports:
     htmltools,
     DT,
     factoextra,
-    ggrepel
+    ggrepel,
+    ggstance,
+    ggthemes,
+    scales,
+    formattable
