@@ -3,6 +3,7 @@
 export(capitalize)
 export(checkboxes_allon_alloff_server)
 export(checkboxes_allon_alloff_ui)
+export(download_baseplot_server)
 export(download_server)
 export(download_ui)
 export(dropdown_box_server)

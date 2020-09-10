@@ -51,29 +51,32 @@ download_server = function(id, obj, fname = 'download', ftype = 'csv', ...) {
         })
 }
 
-
-# download_baseplot_server = function(id, fname, p, dpi=100, ...) {
-#         # This function works. Include it in the package if we ever need to
-#         # use base plot in shiny apps.
-#         #
-#         # Save base plots. Should be used much less frequently than the one
-#         # that saves ggplot2 plots.
-#         #
-#         # fname: string. The name of the png file.
-#         # p: a base plot.
-#         # dpi: numeric. The resolution of the saved png file.
-#         # ...: other parameters to `ggplot2::ggsave()`.
-#
-#         moduleServer(id, function(input, output, session) {
-#                 ns = session$ns
-#                 output$download_png = downloadHandler(
-#                         filename = function() paste0(fname, ".png"),
-#                         content = function(file) {
-#                                 png(file, res=dpi, ...)
-#                                 p
-#                                 dev.off()
-#                         }
-#                 )
-#         })
-# }
-
+#' @title Implement the download button for a base plot.
+#'
+#' @description
+#' The server component of the Shiny module for creating a pretty download
+#' button for downloading a base plot as a png file.
+#'
+#' @param id    String. The input slot that will be used to access the value.
+#' @param obj   The object to be saved. Either a data frame or a ggplot2 object.
+#' @param fname String. Name of the file under which to save the object.
+#' @param dpi   Number. The resolution of the saved png file. Default = 156.
+#' @param ...   Arguments that can be passed into `grDevices::png()`. For
+#'        example, `units`, `width` and `height`.
+#' @return A module server function that can be called in a reactive env.
+#' @seealso \code{\link{download_ui}} for the UI.
+#' @export
+#' @examples inst/examples/ex-download.R
+download_baseplot_server = function(id, obj, fname = 'download', dpi=156, ...) {
+        moduleServer(id, function(input, output, session) {
+                ns = session$ns
+                output$download = downloadHandler(
+                        filename = function() paste0(fname, ".png"),
+                        content = function(file) {
+                                grDevices::png(file, res=dpi, ...)
+                                obj
+                                dev.off()
+                        }
+                )
+        })
+}
