@@ -48,7 +48,7 @@ upload_server = function(id) {
                         df = readr::read_delim(user_file()$datapath,
                                                delim = input$sep,
                                                col_names = input$heading)
-                        # names(df) = gsub('\x92', '', names(df))
+                        names(df) = gsub('\x92', '', names(df))
                         df
                 })
         })
