@@ -28,5 +28,7 @@ mk_checkboxes = function(id, label = NULL, choices, selected = NULL) {
                 outline = TRUE,
                 animation = "jelly",
                 status = 'warning',
-                width = '100%')
+                width = '100%',
+                bigger = T
+                )
 }
