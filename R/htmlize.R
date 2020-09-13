@@ -133,6 +133,15 @@ htmlize_datatable = function(df, type = 'basic', digits = 2,
         }
 }
 
-
-
+#' @title Multiple Linebreaks
+#'
+#' @description
+#' Creates n linebreaks.
+#'
+#' @param n   Integer. The number of line breaks to make.
+#' @return HTML code of n linebreaks.
+#' @export
+#' @examples
+#' linebreaks(5)
+linebreaks = function(n) htmltools::HTML(strrep(br(), n))
 
