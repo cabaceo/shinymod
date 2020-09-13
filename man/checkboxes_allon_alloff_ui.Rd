@@ -4,16 +4,32 @@
 \alias{checkboxes_allon_alloff_ui}
 \title{A group of checkboxes with all-on/all-off control buttons.}
 \usage{
-checkboxes_allon_alloff_ui(id, bttn_height = 60)
+checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'horizontal',
+    hbttns_height = "100\%", hbttns_width = "100\%")
+checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'vertical',
+    line_breaks_bw_cboxes_n_vbttns = 1, vbttns_height = "100\%",
+    vbttns_width = "100\%")
 }
 \arguments{
 \item{id}{String. The input slot that will be used to access the value.}
 
-\item{bttn_height}{Integer. It controls the space below the all-on/all-off
-buttons. The bigger the value (default = 60), the more space there is.
-Without it (or when its value is too small), it can happen that the
-all-on and all-off buttons will overlap with whatever UI elements
-that are placed right below them.}
+\item{align_onoff_bttns}{String. Possible values are 'vertical' (default) or
+'horizontal'. If 'vertical', the all-on and all-off buttons are stacked
+vertically. Otherwise, they are placed horizontally side by side.}
+
+\item{line_breaks_bw_cboxes_n_vbttns}{Integer. Number of line breaks between
+the checkboxes group and the vertically stacked buttons group. Only
+used when `align_onoff_bttns = 'vertical'`.}
+
+\item{vbttns_height, vbttns_width}{The total amount of height and width
+to use for the entire column of the vertically stacked buttons group.
+Their values will be passed into `fillCol()`. Only used when
+`align_onoff_bttns = 'vertical'`.}
+
+\item{hbttns_height, hbttns_width}{The total amount of height and width
+to use for the entire column of the horizontally aligned buttons group.
+Their values will be passed into `fillRow()`. Only used when
+`align_onoff_bttns = 'horizontal'`.}
 }
 \value{
 Must use it together with its counterpart server.

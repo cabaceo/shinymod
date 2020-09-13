@@ -4,34 +4,61 @@
 #' The UI component of the Shiny module for creating a group of pretty
 #' checkboxes with an all-on and an all-off control buttons.
 #'
+#' @usage
+#' checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'horizontal',
+#'     hbttns_height = "100\%", hbttns_width = "100\%")
+#' checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'vertical',
+#'     line_breaks_bw_cboxes_n_vbttns = 1, vbttns_height = "100\%",
+#'     vbttns_width = "100\%")
 #' @param id    String. The input slot that will be used to access the value.
-#' @param bttn_height Integer. It controls the space below the all-on/all-off
-#'        buttons. The bigger the value (default = 60), the more space there is.
-#'        Without it (or when its value is too small), it can happen that the
-#'        all-on and all-off buttons will overlap with whatever UI elements
-#'        that are placed right below them.
+#' @param align_onoff_bttns String. Possible values are 'vertical' (default) or
+#'        'horizontal'. If 'vertical', the all-on and all-off buttons are stacked
+#'        vertically. Otherwise, they are placed horizontally side by side.
+#' @param line_breaks_bw_cboxes_n_vbttns Integer. Number of line breaks between
+#'        the checkboxes group and the vertically stacked buttons group. Only
+#'        used when `align_onoff_bttns = 'vertical'`.
+#' @param vbttns_height,vbttns_width The total amount of height and width
+#'        to use for the entire column of the vertically stacked buttons group.
+#'        Their values will be passed into `fillCol()`. Only used when
+#'        `align_onoff_bttns = 'vertical'`.
+#' @param hbttns_height,hbttns_width The total amount of height and width
+#'        to use for the entire column of the horizontally aligned buttons group.
+#'        Their values will be passed into `fillRow()`. Only used when
+#'        `align_onoff_bttns = 'horizontal'`.
 #' @return Must use it together with its counterpart server.
 #' @seealso \code{\link{checkboxes_allon_alloff_server}} for the server.
 #' @export
 #' @examples inst/examples/ex-checkboxes-allon-alloff.R
-checkboxes_allon_alloff_ui = function(id, bttn_height = 60) {
+checkboxes_allon_alloff_ui =
+        function(id, align_onoff_bttns = 'vertical',
+                 line_breaks_bw_cboxes_n_vbttns = 1,
+                 vbttns_height = '100%', vbttns_width = '100%',
+                 hbttns_height = '100%', hbttns_width = '100%') {
         ns = NS(id)
-        tagList(
-                # placeholder for checkboxes. We cannot place the checkboxes
-                # here directly since they need to be controled by clicking the
-                # all-on/all-off buttons, so we need to place the implementation
-                # of the checkboxes inside the server.
-                uiOutput(ns("placeholder")),
 
-                # all-on and all-off buttons
-                fillRow(shinyWidgets::actionBttn(ns("allon"), "All On",
-                                                 color = "default"),
-                        shinyWidgets::actionBttn(ns("alloff"), "All Off",
-                                                 color = "warning"),
-                        flex = c(3, 7), # first button takes up 30% space
-                        height = bttn_height)
-        )
+        # all-on and all-off buttons
+        allon_bttn = shinyWidgets::actionBttn(ns("allon"), "All On",
+                                              color = "default")
+        alloff_bttn = shinyWidgets::actionBttn(ns("alloff"), "All Off",
+                                               color = "warning")
+
+        if (align_onoff_bttns == 'vertical') {
+                # stack on/off buttons vertically under the checkboxes
+                tagList(uiOutput(ns("placeholder")),
+                        linebreaks(line_breaks_bw_cboxes_n_vbttns),
+                        fillCol(allon_bttn, alloff_bttn, flex = c(1, 9),
+                                height=vbttns_height, width = vbttns_width)
+                        )
+        } else { # put on/off buttons horizontally side by side under the checkboxes
+                tagList(uiOutput(ns("placeholder")),
+                        fillRow(allon_bttn, alloff_bttn,
+                                flex = c(3, 7), # left button takes up 30% space
+                                height = hbttns_height, width = hbttns_width)
+                        )
+        }
 }
+
+
 
 #' @title Implement the control of checkboxes by all-on/all-off buttons.
 #'
