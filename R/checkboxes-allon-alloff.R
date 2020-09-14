@@ -73,12 +73,16 @@ checkboxes_allon_alloff_ui =
 #'        If elements of the list are named then that name rather than the value
 #'        is displayed to the user. The values should be strings; other types
 #'        (such as logicals and numbers) will be coerced to strings.
+#' @param init_checked Character vector. List of values checked initially when
+#'        displaying the group of checkboxes for the first time. Default is
+#'        to have all choices checked initally.
 #' @return A module server function that can be called in a reactive env.
 #' @seealso \code{\link{checkboxes_allon_alloff_ui}} for the UI, and
 #'          \code{\link{mk_checkboxes}} for how the group checkboxes are made.
 #' @export
 #' @examples inst/examples/ex-checkboxes-allon-alloff.R
-checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
+checkboxes_allon_alloff_server = function(id, label = NULL,
+                                          choices, init_checked = choices) {
         moduleServer(id, function(input, output, session) {
                 ns = session$ns
 
@@ -87,7 +91,7 @@ checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
                         mk_checkboxes(ns('checkboxes'),
                                       label = label,
                                       choices = choices,
-                                      selected = choices)
+                                      selected = init_checked)
                 })
 
                 # check off all boxes when the all-off button is clicked
@@ -112,10 +116,12 @@ checkboxes_allon_alloff_server = function(id, label = NULL, choices) {
 
 
                 reactive({
-                        # check: warn users when all items are checked off
-                        validate(need(!is.null(input$checkboxes),
-                                      'Need at least one box checked.'))
-                        req(input$checkboxes)
+                        # ---- This approach has disadvantages
+                        # # check: warn users when all items are checked off
+                        # validate(need(!is.null(input$checkboxes),
+                        #               'Need at least one box checked.'))
+                        # req(input$checkboxes)
+                        input$checkboxes
                 })
         })
 }

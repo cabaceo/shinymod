@@ -4,7 +4,12 @@
 \alias{checkboxes_allon_alloff_server}
 \title{Implement the control of checkboxes by all-on/all-off buttons.}
 \usage{
-checkboxes_allon_alloff_server(id, label = NULL, choices)
+checkboxes_allon_alloff_server(
+  id,
+  label = NULL,
+  choices,
+  init_checked = choices
+)
 }
 \arguments{
 \item{id}{String. The input slot that will be used to access the value.}
@@ -16,6 +21,10 @@ NULL (default) for no label.}
 If elements of the list are named then that name rather than the value
 is displayed to the user. The values should be strings; other types
 (such as logicals and numbers) will be coerced to strings.}
+
+\item{init_checked}{Character vector. List of values checked initially when
+displaying the group of checkboxes for the first time. Default is
+to have all choices checked initally.}
 }
 \value{
 A module server function that can be called in a reactive env.
