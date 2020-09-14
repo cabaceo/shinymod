@@ -17,14 +17,10 @@ checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'vertical',
 'horizontal'. If 'vertical', the all-on and all-off buttons are stacked
 vertically. Otherwise, they are placed horizontally side by side.}
 
-\item{line_breaks_bw_cboxes_n_vbttns}{Integer. Number of line breaks between
-the checkboxes group and the vertically stacked buttons group. Only
-used when `align_onoff_bttns = 'vertical'`.}
-
-\item{vbttns_height, vbttns_width}{The total amount of height and width
-to use for the entire column of the vertically stacked buttons group.
-Their values will be passed into `fillCol()`. Only used when
-`align_onoff_bttns = 'vertical'`.}
+\item{line_breaks_bw_cboxes_n_vbttn1, line_breaks_bw_vbttn1_n_vbttn2}{Integer.
+Number of line breaks between the checkboxes group and the 1st
+vertical button, and between the 1st and 2nd vertically stacked
+buttons. Only used when `align_onoff_bttns = 'vertical'`.}
 
 \item{hbttns_height, hbttns_width}{The total amount of height and width
 to use for the entire column of the horizontally aligned buttons group.
