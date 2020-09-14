@@ -10,11 +10,9 @@
 #' @export
 #' @examples inst/examples/ex-run-button.R
 mk_run_button = function(id, label = 'Run') {
-        tagList(shinyWidgets::actionBttn(inputId = id,
-                                         label = label,
-                                         color = "default",
-                                         style = "material-flat",
-                                         block = TRUE),
-                htmltools::br() # insert a line break
-                )
+        shinyWidgets::actionBttn(inputId = id,
+                                 label = label,
+                                 color = "default",
+                                 style = "material-flat",
+                                 block = TRUE)
 }
