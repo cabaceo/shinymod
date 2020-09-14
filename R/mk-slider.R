@@ -9,6 +9,7 @@
 #' @export
 #' @examples inst/examples/ex-mk-slider.R
 mk_slider = function(id, label = 'Slider Input', ...) {
+
         # customized css ('warning'-colored background, bigger box and etc)
         style = htmltools::tags$style(type = "text/css",
         ".irs-bar {width: 100%; height: 25px; background: #f0ad4e; border-top: 1px solid black; border-bottom: 1px solid black;}
