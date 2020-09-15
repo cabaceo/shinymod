@@ -13,6 +13,8 @@ checkboxes_allon_alloff_ui('id', align_onoff_bttns = 'vertical',
 \arguments{
 \item{id}{String. The input slot that will be used to access the value.}
 
+\item{bttn_size}{String. Size of the button : 'xs', 'sm', 'md', 'lg'.}
+
 \item{align_onoff_bttns}{String. Possible values are 'vertical' (default) or
 'horizontal'. If 'vertical', the all-on and all-off buttons are stacked
 vertically. Otherwise, they are placed horizontally side by side.}

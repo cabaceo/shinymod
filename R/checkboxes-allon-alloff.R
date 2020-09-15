@@ -11,6 +11,7 @@
 #'     line_breaks_bw_cboxes_n_vbttns = 1, vbttns_height = "100\%",
 #'     vbttns_width = "100\%")
 #' @param id    String. The input slot that will be used to access the value.
+#' @param bttn_size String. Size of the button : 'xs', 'sm', 'md', 'lg'.
 #' @param align_onoff_bttns String. Possible values are 'vertical' (default) or
 #'        'horizontal'. If 'vertical', the all-on and all-off buttons are stacked
 #'        vertically. Otherwise, they are placed horizontally side by side.
@@ -27,7 +28,7 @@
 #' @export
 #' @examples inst/examples/ex-checkboxes-allon-alloff.R
 checkboxes_allon_alloff_ui =
-        function(id, align_onoff_bttns = 'vertical',
+        function(id, bttn_size = 'md', align_onoff_bttns = 'vertical',
                  line_breaks_bw_cboxes_n_vbttn1 = 1,
                  line_breaks_bw_vbttn1_n_vbttn2 = 1,
                  hbttns_height = '100%', hbttns_width = '100%') {
@@ -35,9 +36,9 @@ checkboxes_allon_alloff_ui =
 
         # all-on and all-off buttons
         allon_bttn = shinyWidgets::actionBttn(
-                ns("allon"), "All On", color = "default")
+                ns("allon"), "All On", color = "default", size = bttn_size)
         alloff_bttn = shinyWidgets::actionBttn(
-                ns("alloff"), "All Off", color = "warning")
+                ns("alloff"), "All Off", color = "warning", size = bttn_size)
 
         if (align_onoff_bttns == 'vertical') {
                 # stack on/off buttons vertically under the checkboxes
@@ -52,7 +53,8 @@ checkboxes_allon_alloff_ui =
                 tagList(uiOutput(ns("placeholder")),
                         fillRow(allon_bttn, alloff_bttn,
                                 flex = c(3, 7), # left button takes up 30% space
-                                height = hbttns_height, width = hbttns_width)
+                                height = hbttns_height, width = hbttns_width
+                                )
                         )
         }
 }
