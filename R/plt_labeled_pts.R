@@ -20,8 +20,8 @@
 plt_labeled_pts = function(df, xvar, yvar, pt_label_var,
                            title = "Multidimensional Scaling Result",
                            repel_force = 10) {
-        ggplot(df, aes_string(xvar, yvar)) +
-                theme_bw() +
+        p = ggplot(df, aes_string(xvar, yvar)) +
+                theme_classic() +
                 theme(axis.text.x = element_blank(),  # remove x-axis text
                       axis.text.y = element_blank(), # remove y-axis text
                       axis.ticks = element_blank()  # remove axis ticks
@@ -29,13 +29,9 @@ plt_labeled_pts = function(df, xvar, yvar, pt_label_var,
                 labs(x = "", y = "", title = title) +
                 guides(fill = FALSE) +
                 geom_point() +
-                # geom_text(aes(label=name), hjust=0, vjust=0, color=blues9[8],
-                #           check_overlap = TRUE
-                #           )
                 ggrepel::geom_text_repel(aes_string(label = pt_label_var),
-                                         color = blues9[8],
-                                         max.iter = 3000,
-                                         force = repel_force,
-                                         seed = 404
-                                         )
+                                         color = blues9[8], max.iter = 3000,
+                                         force = repel_force, seed = 404)
+
+        square_fig(p)
 }
