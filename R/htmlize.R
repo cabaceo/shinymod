@@ -142,7 +142,17 @@ htmlize_datatable = function(df, type = 'basic', digits = 2,
 #' @param n   Integer. The number of line breaks to make.
 #' @return HTML code of n linebreaks.
 #' @export
-#' @examples
-#' linebreaks(5)
+#' @examples linebreaks(5)
 linebreaks = function(n) htmltools::HTML(strrep(br(), n))
 
+
+#' @title Multiple Spaces
+#'
+#' @description
+#' Creates n spaces.
+#'
+#' @param n   Integer. The number of spaces to make.
+#' @return HTML code of n spaces.
+#' @export
+#' @examples htmlize_spaces(5)
+htmlize_spaces = function(n) paste(rep('&nbsp;', n), collapse = '')
