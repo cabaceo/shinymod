@@ -112,18 +112,19 @@ htmlize_datatable = function(df, type = 'basic', digits = 2,
         # apply the configs
         if (type == 'basic') {
                 res = DT::datatable(df, rownames = FALSE, extensions='Buttons',
-                                    options = list(dom = 'Bfrtip',
+                                    options = list(dom = 'Blfrtip', # B: buttons; l: length, the 'Show X entries' selector
                                                    buttons = bttns_config,
                                                    columnDefs = cols_config,
+                                                   # autoWidth = TRUE,
                                                    paging = F, searching = F,
                                                    info = F))
         } else {
                 res = DT::datatable(df, rownames = FALSE, extensions='Buttons',
-                                    options = list(dom = 'Bfrtip',
+                                    options = list(dom = 'Blfrtip', # B: buttons; l: length, the 'Show X entries' selector
                                                    buttons = bttns_config,
                                                    columnDefs = cols_config,
-                                                   pageLength = 10,
-                                                   autoWidth = TRUE))
+                                                   autoWidth = TRUE,
+                                                   pageLength = 10))
         }
 
         if (is_empty(dec_vars)) {
