@@ -24,7 +24,7 @@ A list of HTML elements that can be added to a UI definition.
 Create a plain dropdown box where only one value can be selected.
 }
 \examples{
-inst/examples/ex-dropdown_box.R
+inst/examples/ex-dropdown-box.R
 }
 \seealso{
 \code{\link{dropdown_box_ui}} for an example of how to use it.

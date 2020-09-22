@@ -13,7 +13,7 @@
 #' @return A list of HTML elements that can be added to a UI definition.
 #' @seealso \code{\link{dropdown_box_ui}} for an example of how to use it.
 #' @export
-#' @examples inst/examples/ex-dropdown_box.R
+#' @examples inst/examples/ex-dropdown-box.R
 mk_dropdown_box = function(id, label = NULL, choices) {
         selectInput(id, label = htmltools::h4(label),
                     choices = choices,
