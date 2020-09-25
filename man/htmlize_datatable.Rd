@@ -9,7 +9,8 @@ htmlize_datatable(
   type = "basic",
   digits = 2,
   add_bttns = FALSE,
-  new_width = "50px"
+  new_width = "50px",
+  ...
 )
 }
 \arguments{
@@ -31,15 +32,19 @@ with all integer values.}
 is '50px'. You can also supply an integer like 90. It only works if
 you want to widen the columns. If you provide a value that's less than
 the current width of the columns, the columns won't get narrower.}
+
+\item{...}{Other parameters (such as rownames = F) that can be passed into
+`DT::datatable()`.}
 }
 \value{
 A `DT::datatable()` object, which can be rendered under
-        `DT::renderDataTable()`.
+        `DT::renderDataTable()` and by default will show rownames.
 }
 \description{
 Add HTML styling to better display data tables.
 }
 \examples{
-htmlize_datatable(iris, type = 'basic', digits = 1)
+htmlize_datatable(iris, type = 'basic', digits = 1, rownames = F)
+htmlize_datatable(iris, type = 'basic', digits = 1, rownames = paste0('AA', 1:nrow(iris)))
 htmlize_datatable(iris, type = 'fancy', digits = 1, add_bttns = TRUE)
 }
