@@ -9,7 +9,7 @@ download_baseplot_server(id, obj, fname = "download", dpi = 156, ...)
 \arguments{
 \item{id}{String. The input slot that will be used to access the value.}
 
-\item{obj}{The object to be saved. Either a data frame or a ggplot2 object.}
+\item{obj}{The ggplot2 object to be saved.}
 
 \item{fname}{String. Name of the file under which to save the object.}
 

@@ -9,7 +9,7 @@ download_server(id, obj, fname = "download", ftype = "csv", ...)
 \arguments{
 \item{id}{String. The input slot that will be used to access the value.}
 
-\item{obj}{The object to be saved. Either a data frame or a ggplot2 object.}
+\item{obj}{The object to be saved. Either a data frame, a blob of text, or a ggplot2 object.}
 
 \item{fname}{String. Name of the file under which to save the object.}
 

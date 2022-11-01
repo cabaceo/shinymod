@@ -24,7 +24,7 @@ download_ui = function(id, label = "Download") {
 #' button for downloading a csv, png, or jpg file.
 #'
 #' @param id    String. The input slot that will be used to access the value.
-#' @param obj   The object to be saved. Either a data frame or a ggplot2 object.
+#' @param obj   The object to be saved. Either a data frame, a blob of text, or a ggplot2 object.
 #' @param fname String. Name of the file under which to save the object.
 #' @param ftype String. Type of the file to save. One of three values:
 #'              'csv' (default), 'png', 'jpg'.
@@ -36,7 +36,7 @@ download_ui = function(id, label = "Download") {
 #' @examples inst/examples/ex-download.R
 download_server = function(id, obj, fname = 'download', ftype = 'csv', ...) {
         stopifnot("`ftype` must be one of 'csv', 'png' or 'jpg'." =
-                          ftype %in% c('csv', 'png', 'jpg'))
+                          ftype %in% c('csv', 'txt', 'png', 'jpg'))
         moduleServer(id, function(input, output, session) {
                 ns = session$ns
                 output$download = downloadHandler(
@@ -44,6 +44,8 @@ download_server = function(id, obj, fname = 'download', ftype = 'csv', ...) {
                         content = function(file) {
                                 if (ftype == 'csv') {
                                         readr::write_csv(obj, file)
+                                } else if (ftype == 'txt') {
+                                        writeLines(obj, file)
                                 } else {
                                         ggplot2::ggsave(file, plot = obj, ...)
                                 }
@@ -58,7 +60,7 @@ download_server = function(id, obj, fname = 'download', ftype = 'csv', ...) {
 #' button for downloading a base plot as a png file.
 #'
 #' @param id    String. The input slot that will be used to access the value.
-#' @param obj   The object to be saved. Either a data frame or a ggplot2 object.
+#' @param obj   The ggplot2 object to be saved.
 #' @param fname String. Name of the file under which to save the object.
 #' @param dpi   Number. The resolution of the saved png file. Default = 156.
 #' @param ...   Arguments that can be passed into `grDevices::png()`. For
@@ -76,6 +78,37 @@ download_baseplot_server = function(id, obj, fname = 'download', dpi=156, ...) {
                                 grDevices::png(file, res=dpi, ...)
                                 obj
                                 dev.off()
+                        }
+                )
+        })
+}
+
+#' @title Implement the download button for a pdf report.
+#'
+#' @description
+#' The server component of the Shiny module for creating a pretty pdf download
+#' button.
+#'
+#' @param id    String. The input slot that will be used to access the value.
+#' @param template_fname String. The file name of the Rmd template for rendering the report.
+#' @param fname String. Name of the file under which to save the object.
+#' @param ...   Arguments that can be passed into the `params` argument inside
+#'              `rmarkdown::render()`.
+#' @return A module server function that can be called in a reactive env.
+#' @seealso \code{\link{download_ui}} for the UI.
+#' @export
+#' @examples inst/examples/ex-download.R
+download_pdf_server = function(id, template_fname, fname='report', ...) {
+        moduleServer(id, function(input, output, session) {
+                ns = session$ns
+                output$download = downloadHandler(
+                        filename = function() paste0(fname, ".pdf"),
+                        content = function(file) {
+                                res = rmarkdown::render(
+                                        template_fname,
+                                        params = list(...)
+                                        )
+                                file.rename(res, file)
                         }
                 )
         })

@@ -12,7 +12,7 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 4.0.2)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Imports: 
     readr,
     shinyWidgets,
