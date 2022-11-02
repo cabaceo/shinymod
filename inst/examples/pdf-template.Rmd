@@ -1,0 +1,23 @@
+---
+title: Title
+author: Cabaceo LLC
+date: "`r format(as.Date('2022-10-29'), '%d %B %Y')`"
+output: 
+  pdf_document:
+    citation_package: natbib
+    keep_tex: false
+    latex_engine: pdflatex
+params:
+   content: NULL
+---
+  
+```{r, echo=FALSE}
+knitr::opts_chunk$set(comment = "", tidy = F, echo = F, warning = F,
+                      message = F, fig.width = 12, fig.height = 10) 
+```
+
+
+```{r, results='asis'}
+if (!is.null(params$content))
+        cat(paste0('> ', params$content))
+```
