@@ -24,7 +24,7 @@ mk_checkboxes = function(id, label = NULL, choices, selected = NULL) {
                 label = htmltools::h4(label),
                 choices = choices,
                 selected = selected,
-                icon = shiny::icon("fa-check-square-o"),
+                icon = shiny::icon("check-square"),
                 outline = TRUE,
                 animation = "jelly",
                 status = 'warning',
