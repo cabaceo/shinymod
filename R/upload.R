@@ -47,7 +47,8 @@ upload_server = function(id) {
                 reactive({
                         df = readr::read_delim(user_file()$datapath,
                                                delim = input$sep,
-                                               col_names = input$heading)
+                                               col_names = input$heading,
+                                               na = c("", " ", "NA"))
                         # names(df) = gsub('\x92', '', names(df)) # https://blog.r-project.org/2022/06/27/why-to-avoid-%5Cx-in-regular-expressions/index.html
                         df
                 })
